@@ -155,7 +155,31 @@ class _SignUpFormState extends State<SignUpForm> {
   }
 
   //*birthday method
-  Future<void> _selectBirthday() async{
-
+  Future<void> _selectBirthday() async {
+    final DateTime? _pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime(DateTime.now().year - 22, DateTime.now().month),
+      firstDate: DateTime(DateTime.now().year - 60, DateTime.now().month),
+      lastDate: DateTime(DateTime.now().year - 18, DateTime.now().month),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.dark().copyWith(
+            colorScheme: ColorScheme.dark(
+                primary: Theme.of(context).accentColor.withOpacity(0.5),
+                onPrimary: Colors.white,
+                surface: Theme.of(context).accentColor.withOpacity(0.5),
+                onSurface: Colors.white,
+            ),
+            dialogBackgroundColor: Theme.of(context).primaryColor.withOpacity(0.3),
+          ),
+          child: child!,
+        );
+      },
+    );
+    if (_pickedDate != null) {
+      setState(() {
+        _birthdayString = _pickedDate.toLocal().toString().split(' ')[0];
+      });
+    }
   }
 }
