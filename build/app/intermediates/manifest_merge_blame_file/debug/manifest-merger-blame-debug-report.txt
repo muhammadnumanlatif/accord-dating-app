@@ -5,39 +5,42 @@
 5    android:versionName="1.0.0" >
 6
 7    <uses-sdk
+7-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:5:5-7:41
 8        android:minSdkVersion="16"
+8-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:6:9-35
 9        android:targetSdkVersion="30" />
+9-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:7:9-38
 10    <!--
 11         Flutter needs it to communicate with the running application
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->/home/mnl/dating/accord/android/app/src/debug/AndroidManifest.xml:6:5-66
-14-->/home/mnl/dating/accord/android/app/src/debug/AndroidManifest.xml:6:22-64
+14-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:12:5-67
+14-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:12:22-64
 15
 16    <application
-16-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:3:4-40:19
+16-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:14:5-60:19
 17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 17-->[androidx.core:core:1.1.0] /home/mnl/.gradle/caches/transforms-2/files-2.1/2e94107f30f39be366a17347c2bf100b/core-1.1.0/AndroidManifest.xml:24:18-86
 18        android:debuggable="true"
 19        android:icon="@mipmap/ic_launcher"
-19-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:5:9-43
+19-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:16:9-43
 20        android:label="Accord" >
-20-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:4:9-31
+20-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:15:9-31
 21        <activity
-21-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:6:9-34:20
+21-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:18:9-52:20
 22            android:name="com.avinetech.accord.MainActivity"
-22-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:7:13-41
+22-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:19:13-41
 23            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-23-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:10:13-163
+23-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:22:13-163
 24            android:hardwareAccelerated="true"
-24-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:11:13-47
+24-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:23:13-47
 25            android:launchMode="singleTop"
-25-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:8:13-43
+25-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:20:13-43
 26            android:theme="@style/LaunchTheme"
-26-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:9:13-47
+26-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:21:13-47
 27            android:windowSoftInputMode="adjustResize" >
-27-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:12:13-55
+27-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:24:13-55
 28
 29            <!--
 30                 Specifies an Android theme to apply to this Activity as soon as
@@ -46,11 +49,11 @@
 33                 to determine the Window background behind the Flutter UI.
 34            -->
 35            <meta-data
-35-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:17:13-20:17
+35-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:33:13-35:57
 36                android:name="io.flutter.embedding.android.NormalTheme"
-36-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:18:15-70
+36-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:34:17-72
 37                android:resource="@style/NormalTheme" />
-37-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:19:15-52
+37-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:35:17-54
 38            <!--
 39                 Displays an Android View that continues showing the launch screen
 40                 Drawable until Flutter paints its first frame, then this splash
@@ -59,21 +62,21 @@
 43                 Flutter's first frame.
 44            -->
 45            <meta-data
-45-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:26:13-29:17
+45-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:43:13-45:66
 46                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-46-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:27:15-79
+46-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:44:17-81
 47                android:resource="@drawable/launch_background" />
-47-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:28:15-61
+47-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:45:17-63
 48
 49            <intent-filter>
-49-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:30:13-33:29
+49-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:47:13-51:29
 50                <action android:name="android.intent.action.MAIN" />
-50-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:31:17-68
-50-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:31:25-66
+50-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:48:17-69
+50-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:48:25-66
 51
 52                <category android:name="android.intent.category.LAUNCHER" />
-52-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:32:17-76
-52-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:32:27-74
+52-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:50:17-77
+52-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:50:27-74
 53            </intent-filter>
 54        </activity>
 55        <!--
@@ -81,11 +84,11 @@
 57             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
 58        -->
 59        <meta-data
-59-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:37:9-39:33
+59-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:57:9-59:33
 60            android:name="flutterEmbedding"
-60-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:38:13-44
+60-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:58:13-44
 61            android:value="2" />
-61-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:39:13-30
+61-->/home/mnl/dating/accord/android/app/src/main/AndroidManifest.xml:59:13-30
 62    </application>
 63
 64</manifest>
