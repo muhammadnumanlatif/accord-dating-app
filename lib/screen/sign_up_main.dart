@@ -10,12 +10,36 @@ class SignUpMain extends StatefulWidget {
 
 class _SignUpMainState extends State<SignUpMain> {
   final PageController _pageController = PageController();
-  double _currrentPageViewIndex = 0;
+  double _currentPageViewIndex = 0;
+  Color _nextColor = Color(0xffEE5522);
+  String _nextButtonString = 'Next';
+
+  void changeNextButtonTextAndColor(int page) {
+    // _currentPageViewIndex = page.toDouble();
+    switch (page) {
+      case 2:_nextButtonString = 'Join Now!'; _nextColor = Theme.of(context).accentColor.withOpacity(0.9); break;
+      default: _nextButtonString = 'Next';_nextColor = Theme.of(context).primaryColor; break;
+    }
+  }
+
+  void cancelButtonEvent(context) => _currentPageViewIndex > 0 ? _pageController.animateToPage(0, duration: Duration(milliseconds: 200), curve: Curves.easeIn) :Navigator.pop(context);
+
+  void _moveToNextPage() => _pageController.animateToPage(_pageController.page!.toInt() + 1,duration: Duration(milliseconds: 200),curve: Curves.easeIn);
+
+  void nextButtonEvent(context) {
+    switch (_pageController.page!.toInt()) {
+      case 0: case 1: _moveToNextPage();break;
+      case 2: {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => DatingMain()));
+      }break;
+    }
+  }
+
   @override
   void initState() {
     _pageController.addListener(() {
       setState(() {
-        _currrentPageViewIndex = _pageController.page!;
+        _currentPageViewIndex = _pageController.page!;
       });
     });
     super.initState();
@@ -26,8 +50,8 @@ class _SignUpMainState extends State<SignUpMain> {
       child: Divider(
         height: 1.h,
         thickness: 5.sp,
-        color: location - 1 <= _currrentPageViewIndex &&
-                _currrentPageViewIndex < location
+        color: location - 1 <= _currentPageViewIndex &&
+                _currentPageViewIndex < location
             ? Colors.white.withOpacity(0.8)
             : Colors.white.withOpacity(0.4),
         indent: 1.sp,
@@ -64,6 +88,7 @@ class _SignUpMainState extends State<SignUpMain> {
                 Expanded(
                   child: PageView(
                     controller: _pageController,
+                    onPageChanged: (int page) => setState(() => changeNextButtonTextAndColor(page)),
                     children: [
                       SignUpForm(),
                       SignUpImages(),
@@ -78,7 +103,7 @@ class _SignUpMainState extends State<SignUpMain> {
                     children: [
                       //*Cancel
                       MaterialButton(
-                        onPressed: (){},
+                        onPressed: ()=> cancelButtonEvent(context),
                         child: Text(
                           'Cancel',
                           style: Theme.of(context).textTheme.subtitle1!.copyWith(
@@ -94,14 +119,14 @@ class _SignUpMainState extends State<SignUpMain> {
                       ),
                       //*Next
                       MaterialButton(
-                        onPressed: (){},
+                        onPressed: ()=> nextButtonEvent(context),
                         child: Text(
-                          'Next',
+                          _nextButtonString,
                           style: Theme.of(context).textTheme.subtitle1!.copyWith(
                             color: Colors.white,
                           ),
                         ),
-                        color: Theme.of(context).primaryColor,
+                        color: _nextColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.sp)),
                         padding: EdgeInsets.all(5.sp),

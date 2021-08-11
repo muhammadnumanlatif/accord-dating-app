@@ -46,7 +46,7 @@ class _SignUpIntrestsState extends State<SignUpIntrests> {
         pressElevation: 8.sp,
         shadowColor: Theme.of(context).accentColor,
         backgroundColor: Theme.of(context).primaryColor,
-        selectedColor: Theme.of(context).accentColor.withOpacity(0.8),
+        selectedColor: Theme.of(context).accentColor.withOpacity(0.9),
         onSelected: (bool selected) {
           setState(() {
             if (selected) {
