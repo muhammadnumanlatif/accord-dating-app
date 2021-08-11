@@ -32,6 +32,11 @@ class MyApp extends StatelessWidget {
                 fontSize: 12.sp,
               ),
             ),
+            checkboxTheme: CheckboxThemeData(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(3.sp),
+              ),
+            ),
               unselectedWidgetColor: Colors.white.withOpacity(0.8),
               disabledColor: Colors.white.withOpacity(0.4),
           ),

@@ -1,5 +1,5 @@
 import '../../utils.dart';
-
+import '../../widgets.dart';
 enum GenderEnum { man, woman }
 
 class SignUpForm extends StatefulWidget {
@@ -12,23 +12,22 @@ class SignUpForm extends StatefulWidget {
 class _SignUpFormState extends State<SignUpForm> {
   GenderEnum _userGender = GenderEnum.man;
   String _birthdayString = 'Select Your birthday';
+  bool _isAgreeTerm = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 5.w),
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 1.h),
           child: Column(
             children: [
-              SizedBox(
-                height: 2.h,
-              ),
+
               Center(
                 child: Text(
                   'Type Your Information',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline1!.copyWith(
+                  style: Theme.of(context).textTheme.subtitle1!.copyWith(
                         fontWeight: FontWeight.w400,
                       ),
                 ),
@@ -46,9 +45,9 @@ class _SignUpFormState extends State<SignUpForm> {
                     size: 25.sp,
                   ),
                   labelText: 'Type your Name',
-                  labelStyle: Theme.of(context).textTheme.subtitle1,
+                  labelStyle: Theme.of(context).textTheme.bodyText1,
                   hintText: 'Name is required',
-                  hintStyle: Theme.of(context).textTheme.subtitle1,
+                  hintStyle: Theme.of(context).textTheme.bodyText1,
                 ),
               ),
               //*divider
@@ -82,25 +81,69 @@ class _SignUpFormState extends State<SignUpForm> {
                     width: 3.w,
                   ),
                   //*button
-                  MaterialButton(
-                    onPressed: () => _selectBirthday(),
-                    child: Text(
-                      _birthdayString,
-                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                            color: Colors.white,
-                          ),
+                  Flexible(
+                    child: MaterialButton(
+                      onPressed: () => _selectBirthday(),
+                      child: Text(
+                        _birthdayString,
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                              color: Colors.white,
+                            ),
+                      ),
+                      color: Theme.of(context).primaryColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.sp)),
+                      padding: EdgeInsets.all(5.sp),
+                      minWidth: 75.w,
+                      splashColor: Colors.white,
                     ),
-                    color: Theme.of(context).primaryColor,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.sp)),
-                    padding: EdgeInsets.all(5.sp),
-                    minWidth: 75.w,
-                    splashColor: Colors.white,
                   ),
                 ],
               ),
               //*divider
               customDivider(),
+              //*checkbox
+              Row(
+                children: [
+                  Checkbox(
+                    value: _isAgreeTerm,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        _isAgreeTerm = value!;
+                      });
+                    },
+                    activeColor: Colors.white,
+                    checkColor: Theme.of(context).primaryColor,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _isAgreeTerm = !_isAgreeTerm;
+                      });
+                    },
+                    child: Text(
+                      'I agree to ',
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _isAgreeTerm = !_isAgreeTerm;
+                      });
+
+                      _customBottomSheet(Text("This is a modal sheet"));
+                    },
+                    child: Text(
+                      'Term of Services ',
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            decoration: TextDecoration.underline,
+                            decorationStyle: TextDecorationStyle.double,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -140,7 +183,7 @@ class _SignUpFormState extends State<SignUpForm> {
           child: Text(
             value == GenderEnum.man ? 'Man' : 'Woman',
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.subtitle1,
+            style: Theme.of(context).textTheme.bodyText1,
           ),
         ),
       ],
@@ -165,12 +208,13 @@ class _SignUpFormState extends State<SignUpForm> {
         return Theme(
           data: ThemeData.dark().copyWith(
             colorScheme: ColorScheme.dark(
-                primary: Theme.of(context).accentColor.withOpacity(0.5),
-                onPrimary: Colors.white,
-                surface: Theme.of(context).accentColor.withOpacity(0.5),
-                onSurface: Colors.white,
+              primary: Theme.of(context).accentColor.withOpacity(0.5),
+              onPrimary: Colors.white,
+              surface: Theme.of(context).accentColor.withOpacity(0.5),
+              onSurface: Colors.white,
             ),
-            dialogBackgroundColor: Theme.of(context).primaryColor.withOpacity(0.3),
+            dialogBackgroundColor:
+                Theme.of(context).primaryColor.withOpacity(0.3),
           ),
           child: child!,
         );
@@ -181,5 +225,45 @@ class _SignUpFormState extends State<SignUpForm> {
         _birthdayString = _pickedDate.toLocal().toString().split(' ')[0];
       });
     }
+  }
+
+  Future<void> _customBottomSheet(Widget widget) async {
+    showBottomSheet(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(25.sp),
+          ),
+        ),
+        context: context,
+        builder: (context) => Container(
+          height: 55.h,
+
+          child: Container(
+              decoration:  BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius:  BorderRadius.only(
+                      topLeft:  Radius.circular(25.sp),
+                      topRight:  Radius.circular(25.sp))),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 1.h,
+                  ),
+                  Center(
+                    child:  Text(
+                        "Term of Services",
+                      style: Theme.of(context).textTheme.headline1,
+                    ),
+                  ),
+                  Divider(
+                    color: Colors.white,
+                    height: 1.h,
+                    thickness: 1.sp,
+                    endIndent: 5.w,
+                    indent: 5.w,
+                  ),
+                ],
+              )),
+        ));
   }
 }
