@@ -3,7 +3,7 @@ import '../models.dart';
 import '../screens.dart';
 import '../widgets.dart';
 
-
+import '/model/user_data.dart';
 
 class Home extends StatefulWidget {
   static String screenId = 'home';

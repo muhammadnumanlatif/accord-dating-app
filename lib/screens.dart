@@ -3,3 +3,8 @@ export 'screen/register/sign_up_form.dart';
 export 'screen/register/sign_up_images.dart';
 export 'screen/register/sign_up_intrests.dart';
 export 'screen/dating_main.dart';
+export 'screen/setting.dart';
+export 'screen/lounge.dart';
+export 'screen/search.dart';
+export 'screen/chat_list.dart';
+export 'screen/user_profile.dart';

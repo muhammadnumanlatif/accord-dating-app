@@ -8,3 +8,6 @@ export 'dart:io';
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:image_cropper/image_cropper.dart';
 export 'package:image_picker/image_picker.dart';
+export 'package:photo_view/photo_view.dart';
+export 'package:photo_view/photo_view_gallery.dart';
+

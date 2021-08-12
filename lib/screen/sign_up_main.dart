@@ -30,7 +30,7 @@ class _SignUpMainState extends State<SignUpMain> {
     switch (_pageController.page!.toInt()) {
       case 0: case 1: _moveToNextPage();break;
       case 2: {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => DatingMain()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DatingMain()));
       }break;
     }
   }
