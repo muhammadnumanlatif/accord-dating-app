@@ -41,24 +41,28 @@ class _SearchState extends State<Search> with userProfileCommon,WidgetsBindingOb
     ) :
     Column(
       children: <Widget>[
+        SizedBox(
+          height: 2.h,
+        ),
         Expanded(
           child: Container(
-            height: MediaQuery.of(context).size.height*0.88,
-            width: MediaQuery.of(context).size.width*1.4,
+            height: 90.h,
+            width: 85.w,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Colors.transparent,
+              borderRadius: BorderRadius.circular(12.sp),
+              color: Colors.deepOrange,
             ),
             child: SwipeCard(
               orientation: AmassOrientation.LEFT,
               totalNum: dummyUserDataListInSearch.length,
               stackNum: 3,
-              swipeEdge: 4.0,
-              maxWidth: 90.w,
-              maxHeight: 85.h,
-              minWidth: 84.w,
-              minHeight:70.h,
+              swipeEdge: 5.0,
+              maxWidth: 95.w,
+              maxHeight: 95.h,
+              minWidth: 90.w,
+              minHeight:90.h,
               cardController: cardController,
+
               cardBuilder: (context,index){
                 return Stack(
                   children: <Widget>[
@@ -68,16 +72,17 @@ class _SearchState extends State<Search> with userProfileCommon,WidgetsBindingOb
                       scrollDirection: Axis.vertical,
                     ),
                     Positioned(
-                      top:54,
-                      right:36,
+                      top:3.h,
+                      right:3.w,
+
                       child: _isLike != null && !_isLike! && index == _currentIndex?
-                      _likeOrDislikeIconOnPhoto(FontAwesomeIcons.ban,Colors.redAccent) : Container(),
+                      _likeOrDislikeIconOnPhoto(FontAwesomeIcons.ban,Colors.deepOrangeAccent) : Container(),
                     ),
                     Positioned(
-                      top:50,
-                      left:40,
+                      top:3.h,
+                      left:3.h,
                       child: _isLike != null && _isLike! && index == _currentIndex?
-                      _likeOrDislikeIconOnPhoto(FontAwesomeIcons.kissWinkHeart,Colors.green): Container(),
+                      _likeOrDislikeIconOnPhoto(FontAwesomeIcons.kissWinkHeart,Colors.greenAccent): Container(),
                     )
                   ],
                 );
@@ -110,7 +115,10 @@ class _SearchState extends State<Search> with userProfileCommon,WidgetsBindingOb
               },
               swipeCompleteCallback: (CardSwipeOrientation orientation, int index) {
                 print('orientation is $orientation and index is $index');
-                if(orientation == CardSwipeOrientation.LEFT || orientation == CardSwipeOrientation.RIGHT){
+                if(
+                orientation == CardSwipeOrientation.LEFT
+                    || orientation == CardSwipeOrientation.RIGHT
+                ){
                   setState(() {
                     _currentIndex = index+1;
                   });
@@ -123,7 +131,7 @@ class _SearchState extends State<Search> with userProfileCommon,WidgetsBindingOb
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(12.0,8,12,8),
+          padding: EdgeInsets.fromLTRB(1.w,5.h,1.w,5.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: bottomIconDataList.map(bottomButtonWidget).toList(),
@@ -145,13 +153,13 @@ Widget _likeOrDislikeIconOnPhoto(IconData icon, Color iconColor){
             child: FaIcon(
               icon,
               color: Colors.black54,
-              size: 76,
+              size: 25.sp,
             )
         ),
         FaIcon(
           icon,
           color: iconColor,
-          size: 76,
+          size: 25.sp,
         )
       ],
     ),
@@ -165,11 +173,12 @@ List<Widget> _userProfile(Size size, int index,){
       children: [
         GestureDetector(
           child: Container(
+
             height: size.height,
             width: size.width-14,
             color: Colors.white,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(25.0),
+              borderRadius: BorderRadius.circular(25.sp),
               child:
               CachedNetworkImage(
                 imageUrl: dummyUserDataListInSearch[index].userImages[i],
@@ -177,19 +186,20 @@ List<Widget> _userProfile(Size size, int index,){
                   transform: Matrix4.translationValues(0.0, 0.0, 0.0),
                   child: Container(
                       width: double.infinity,
-                      height: MediaQuery.of(context).size.height*0.77,
+                      height: 77.h,
                       child: Center(child: new CircularProgressIndicator())),
                 ),
                 errorWidget: (context, url, error) => new Icon(Icons.error),
                 width: double.infinity,
-                height: MediaQuery.of(context).size.height*0.77,
+                height:77.h,
                 fit: BoxFit.cover,
               ),
             ),
           ),
           onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => FullPhoto(imageUrlList: dummyUserDataListInSearch[index].userImages,initIndex: i,)));
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => FullPhoto(
+              imageUrlList: dummyUserDataListInSearch[index].userImages,initIndex: i,)));
           },
         ),
         Positioned(

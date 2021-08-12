@@ -3,6 +3,7 @@ import '../models.dart';
 import '../screens.dart';
 import '../widgets.dart';
 export '/model/const_data.dart';
+import '/model/user_profile_common.dart';
 
 class Lounge extends StatefulWidget {
   const Lounge({Key? key}) : super(key: key);
@@ -38,10 +39,14 @@ class _LoungeState extends State<Lounge> {
                 shrinkWrap: true,
                 children: dummyUserDataListInLounge().map<Widget>( (data) {
                   return  GestureDetector(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => UserProfile(
-                        // data,
-                        // ParentClassType.Lounge,
-                    )),),
+                    onTap: () => Navigator.push(
+                      context, MaterialPageRoute(
+                        builder: (context) => UserProfile(
+                          data,
+                        ParentClassType.Lounge,
+                    ),
+                    ),
+                    ),
                     child: _GridDemoPhotoItem(userData:data,),
                   );
                 }).toList()),

@@ -8,3 +8,4 @@ export 'screen/lounge.dart';
 export 'screen/search.dart';
 export 'screen/chat_list.dart';
 export 'screen/user_profile.dart';
+export 'screen/edit_profile.dart';

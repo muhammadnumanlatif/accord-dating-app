@@ -63,7 +63,7 @@ class _DatingMainState extends State<DatingMain> with TickerProviderStateMixin{
                   ],
                 ),
               ),
-              backgroundColor: Theme.of(context).primaryColor,
+              // backgroundColor: Theme.of(context).primaryColor
             ),
             body: TabBarView(
               physics: _tabController!.index == 0 ? NeverScrollableScrollPhysics() : AlwaysScrollableScrollPhysics(),
